@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+
+
+
+
+
+
+    <div class="container_form" id="form-login" style="display: none">
+
+        <h1>Login <span>Now</span></h1>
+        <p>Non sei registrato? <a href="#" onclick="toggleForms(event)">Registrati ora</a></p>
+        <form action="" method="post">
+
+            <div class="inputs">
+                <div class="input-box">
+                    <input type="email" required>
+                    <label for="">email@example.it</label>
+                </div>
+                <div class="input-box">
+                    <input type="password" required>
+                    <label for="">Password</label>
+                </div>
+            </div>
+
+
+            <div class="inputs">
+                <div class="input-box">
+                    <button type="submit" class="btn">
+                        Login Now
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+
+
+
+    <div class="container_form" id="form-register">
+        <h1>Register <span>Now</span></h1>
+        <p>Sei già registrato? <a href="" onclick="toggleForms(event)">Accedi ora</a></p>
+        <form action="" method="post">
+
+            <div class="inputs">
+                <div class="input-box">
+                    <input type="text" required>
+                    <label for="">Name</label>
+                </div>
+
+                <div class="input-box">
+                    <input type="text" required>
+                    <label for="">Surname</label>
+                </div>
+            </div>
+
+            <div class="inputs">
+                <div class="input-box">
+                    <input type="email" required>
+                    <label for="">email@example.it</label>
+                </div>
+            </div>
+
+            <div class="inputs">
+                <div class="input-box">
+                    <input type="password" required>
+                    <label for="">Password</label>
+                </div>
+                <div class="input-box">
+                    <input type="confirm_password" required>
+                    <label for="">Confirm Password</label>
+                </div>
+            </div>
+
+            <div class="inputs">
+                <div class="input-box">
+                    <small>Immagine di profilo</small>
+                    <input type="file" name="profile_pic" id="profile_pic" required>
+                </div>
+
+                <div class="input-box">
+                    <small>Immagine di banner</small>
+                    <input type="file" name="cover_pic" id="cover_pic" required>
+                </div>
+            </div>
+
+
+            <br>
+            <div class="inputs">
+                <div class="input-box">
+                    <button type="submit" class="btn">
+                        Register Now
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+
+
+
+        </form>
+    </div>
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script>
+
+
+        $(document).ready(function () {
+            $(".btn")
+                .on("mouseenter", function (e) {
+                    var parentOffset = $(this).offset(),
+                        relX = e.pageX - parentOffset.left,
+                        relY = e.pageY - parentOffset.top;
+                    $(this).find("span").css({
+                        top: relY,
+                        left: relX,
+                    });
+                })
+                .on("mouseout", function (e) {
+                    var parentOffset = $(this).offset(),
+                        relX = e.pageX - parentOffset.left,
+                        relY = e.pageY - parentOffset.top;
+                    $(this).find("span").css({
+                        top: relY,
+                        left: relX,
+                    });
+                });
+        });
+
+
+
+
+
+
+
+        function toggleForms(event) {
+            event.preventDefault(); // ⛔ blocca il refresh!
+
+            const loginForm = document.getElementById("form-login");
+            const registerForm = document.getElementById("form-register");
+
+            if (loginForm.style.display === "none") {
+                loginForm.style.display = "block";
+                registerForm.style.display = "none";
+            } else {
+                loginForm.style.display = "none";
+                registerForm.style.display = "block";
+            }
+        }
+    </script>
+</body>
+
+</html>
